@@ -5,6 +5,7 @@
 # QiYi Smart Cube for Home Assistant
 
 [![Tests](https://github.com/Kununa/ha-qiyi-cube/actions/workflows/tests.yml/badge.svg)](https://github.com/Kununa/ha-qiyi-cube/actions/workflows/tests.yml)
+[![Validate](https://github.com/Kununa/ha-qiyi-cube/actions/workflows/validate.yml/badge.svg)](https://github.com/Kununa/ha-qiyi-cube/actions/workflows/validate.yml)
 
 > **Vibe coded.** This integration was written almost entirely by an AI
 > (Claude Code) in conversation with its owner. It was tested against one real
@@ -177,8 +178,9 @@ python3 -m venv .venv
 .venv/bin/python tools/gyro_capture.py 120      # print the quaternion stream
 ```
 
-GitHub Actions runs the tests on every push and pull request
-(`.github/workflows/tests.yml`).
+GitHub Actions runs the tests (`tests.yml`) and Home Assistant's hassfest plus
+the HACS validation (`validate.yml`, also weekly) on every push and pull
+request.
 
 `protocol.py`, `cube.py` and `solver.py` have no Home Assistant imports, so the
 tools can use them directly. The tools need the cube to themselves: disable

@@ -133,6 +133,13 @@ csTimer's `qiyicube.js` / smartcube-web-bluetooth.
   Two-phase overestimates patterned states (`(R U R' U')×3` → 15), hence the
   piece count. Thresholds are untested on real solves yet.
 
+## CI
+
+`.github/workflows/tests.yml` (pytest, Python 3.14) and `validate.yml`
+(hassfest + HACS action, also weekly). Both green as of 2026-10-11; HACS
+accepts the local `brand/` folder. `pytest-homeassistant-custom-component` is
+pinned to the HA version we test against – bump deliberately.
+
 ## Commands
 
 ```sh
