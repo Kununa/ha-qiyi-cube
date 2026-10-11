@@ -1,0 +1,102 @@
+name: Release
+
+# One-click release: Actions → Release → Run workflow, enter e.g. 0.6.0.
+# Runs the tests, sets the version in manifest.json (committed to main if it
+# changed), tags v<version>, builds qiyi_cube.zip and publishes a GitHub
+# release with generated notes. "Dry run" does everything except publishing.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version without the leading v, e.g. 0.6.0"
+        required: true
+      prerelease:
+        description: "Mark as pre-release"
+        type: boolean
+        default: false
+      dry_run:
+        description: "Dry run: build and check only, publish nothing"
+        type: boolean
+        default: false
+
+concurrency: release
+
+jobs:
+  check:
+    name: Check version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Validate version
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+([ab][0-9]+)?$ ]]; then
+            echo "::error::'$VERSION' is not a version like 1.2.3 (or 1.2.3b1)"; exit 1
+          fi
+          if git rev-parse -q --verify "refs/tags/v$VERSION" >/dev/null; then
+            echo "::error::Tag v$VERSION already exists"; exit 1
+          fi
+
+  tests:
+    needs: check
+    uses: ./.github/workflows/tests.yml
+
+  release:
+    name: Release
+    needs: tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      VERSION: ${{ inputs.version }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set version in manifest.json
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path("custom_components/qiyi_cube/manifest.json")
+          manifest = json.loads(path.read_text())
+          manifest["version"] = os.environ["VERSION"]
+          path.write_text(json.dumps(manifest, indent=2) + "\n")
+          PY
+          git diff --stat
+
+      - name: Build qiyi_cube.zip
+        run: |
+          cd custom_components/qiyi_cube
+          zip -r -X "$GITHUB_WORKSPACE/qiyi_cube.zip" . -x '__pycache__/*' '*/__pycache__/*' '*.pyc'
+          unzip -l "$GITHUB_WORKSPACE/qiyi_cube.zip"
+
+      - name: Keep zip (dry run)
+        if: inputs.dry_run
+        uses: actions/upload-artifact@v7
+        with:
+          name: qiyi_cube-${{ inputs.version }}
+          path: qiyi_cube.zip
+
+      - name: Commit version and tag
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet; then
+            git commit -am "Release v$VERSION"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+          git tag "v$VERSION"
+          git push origin "v$VERSION"
+
+      - name: Publish GitHub release
+        if: ${{ !inputs.dry_run }}
+        run: |
+          gh release create "v$VERSION" qiyi_cube.zip \
+            --title "v$VERSION" --generate-notes \
+            ${{ inputs.prerelease && '--prerelease' || '' }}

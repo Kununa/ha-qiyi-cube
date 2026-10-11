@@ -1,4 +1,6 @@
 {
   "name": "QiYi Smart Cube",
-  "homeassistant": "2026.10.0"
+  "homeassistant": "2026.10.0",
+  "zip_release": true,
+  "filename": "qiyi_cube.zip"
 }
