@@ -11,8 +11,8 @@ from PIL import Image, ImageDraw
 OUT = Path(__file__).resolve().parent.parent / "custom_components" / "qiyi_cube" / "brand"
 BODY = (22, 22, 22, 255)
 BODY_DARK = (64, 64, 64, 255)  # dark theme: lighter body so the cube stands out
-TOP, LEFT, RIGHT = (244, 244, 244), (31, 166, 74), (215, 38, 61)  # white, green, red
-SHADE = {"top": 1.0, "left": 0.86, "right": 0.74}  # simple lighting per face
+TOP, LEFT, RIGHT = (250, 250, 250), (0, 200, 83), (244, 32, 56)  # white, green, red
+SHADE = {"top": 1.0, "left": 0.95, "right": 0.88}  # subtle lighting per face
 SS = 8  # supersampling factor for anti-aliasing
 
 
