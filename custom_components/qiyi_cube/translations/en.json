@@ -1,0 +1,112 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "description": "Turn a face of the cube to wake it up, then select it.",
+        "data": {
+          "address": "Device"
+        }
+      },
+      "bluetooth_confirm": {
+        "description": "Set up {name}?"
+      }
+    },
+    "abort": {
+      "already_configured": "Device is already configured",
+      "no_devices_found": "No QiYi cubes found. Turn a face to wake the cube and try again.",
+      "not_supported": "Device not supported"
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "solved": {
+        "name": "Solved"
+      },
+      "solving": {
+        "name": "Solving"
+      }
+    },
+    "event": {
+      "move": {
+        "name": "Move"
+      }
+    },
+    "sensor": {
+      "last_move": {
+        "name": "Last move"
+      },
+      "moves_since_solved": {
+        "name": "Moves since solved"
+      },
+      "last_solve_moves": {
+        "name": "Last solve moves"
+      },
+      "last_solve_duration": {
+        "name": "Last solve duration",
+        "state_attributes": {
+          "tps": {
+            "name": "Turns per second"
+          },
+          "scramble_moves": {
+            "name": "Scramble moves"
+          },
+          "scramble_distance": {
+            "name": "Scramble distance"
+          },
+          "inspection_seconds": {
+            "name": "Inspection"
+          }
+        }
+      },
+      "solved_faces": {
+        "name": "Solved faces",
+        "state_attributes": {
+          "facelets": {
+            "name": "Facelets"
+          },
+          "face_u": {
+            "name": "Up face"
+          },
+          "face_r": {
+            "name": "Right face"
+          },
+          "face_f": {
+            "name": "Front face"
+          },
+          "face_d": {
+            "name": "Down face"
+          },
+          "face_l": {
+            "name": "Left face"
+          },
+          "face_b": {
+            "name": "Back face"
+          }
+        }
+      },
+      "top_face": {
+        "name": "Top face",
+        "state": {
+          "white": "White",
+          "red": "Red",
+          "green": "Green",
+          "yellow": "Yellow",
+          "orange": "Orange",
+          "blue": "Blue"
+        }
+      },
+      "moves_to_solve": {
+        "name": "Moves to solve",
+        "state_attributes": {
+          "solution": {
+            "name": "Solution"
+          }
+        }
+      },
+      "orientation": {
+        "name": "Orientation"
+      }
+    }
+  }
+}

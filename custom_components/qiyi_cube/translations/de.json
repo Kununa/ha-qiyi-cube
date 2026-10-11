@@ -1,0 +1,112 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "description": "Drehe eine Seite des Würfels, um ihn aufzuwecken, und wähle ihn dann aus.",
+        "data": {
+          "address": "Gerät"
+        }
+      },
+      "bluetooth_confirm": {
+        "description": "{name} einrichten?"
+      }
+    },
+    "abort": {
+      "already_configured": "Gerät ist bereits eingerichtet",
+      "no_devices_found": "Keine QiYi-Würfel gefunden. Drehe eine Seite, um den Würfel aufzuwecken, und versuche es erneut.",
+      "not_supported": "Gerät wird nicht unterstützt"
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "solved": {
+        "name": "Gelöst"
+      },
+      "solving": {
+        "name": "Löst gerade"
+      }
+    },
+    "event": {
+      "move": {
+        "name": "Zug"
+      }
+    },
+    "sensor": {
+      "last_move": {
+        "name": "Letzter Zug"
+      },
+      "moves_since_solved": {
+        "name": "Züge seit gelöst"
+      },
+      "last_solve_moves": {
+        "name": "Letzte Lösung Züge"
+      },
+      "last_solve_duration": {
+        "name": "Letzte Lösung Dauer",
+        "state_attributes": {
+          "tps": {
+            "name": "Züge pro Sekunde"
+          },
+          "scramble_moves": {
+            "name": "Scramble-Züge"
+          },
+          "scramble_distance": {
+            "name": "Scramble-Abstand"
+          },
+          "inspection_seconds": {
+            "name": "Inspektion"
+          }
+        }
+      },
+      "solved_faces": {
+        "name": "Gelöste Seiten",
+        "state_attributes": {
+          "facelets": {
+            "name": "Felder"
+          },
+          "face_u": {
+            "name": "Oben"
+          },
+          "face_r": {
+            "name": "Rechts"
+          },
+          "face_f": {
+            "name": "Vorne"
+          },
+          "face_d": {
+            "name": "Unten"
+          },
+          "face_l": {
+            "name": "Links"
+          },
+          "face_b": {
+            "name": "Hinten"
+          }
+        }
+      },
+      "top_face": {
+        "name": "Oben liegende Seite",
+        "state": {
+          "white": "Weiß",
+          "red": "Rot",
+          "green": "Grün",
+          "yellow": "Gelb",
+          "orange": "Orange",
+          "blue": "Blau"
+        }
+      },
+      "moves_to_solve": {
+        "name": "Züge bis gelöst",
+        "state_attributes": {
+          "solution": {
+            "name": "Lösung"
+          }
+        }
+      },
+      "orientation": {
+        "name": "Ausrichtung"
+      }
+    }
+  }
+}
