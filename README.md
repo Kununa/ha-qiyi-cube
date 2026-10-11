@@ -182,6 +182,12 @@ GitHub Actions runs the tests (`tests.yml`) and Home Assistant's hassfest plus
 the HACS validation (`validate.yml`, also weekly) on every push and pull
 request.
 
+**Releasing:** GitHub → *Actions* → *Release* → *Run workflow*, enter the
+new version (e.g. `0.6.0`). The workflow runs the tests, sets the version in
+`manifest.json`, tags `v0.6.0`, and publishes a release with generated notes
+and `qiyi_cube.zip`, which HACS installs. Tick *dry run* to try it without
+publishing anything.
+
 `protocol.py`, `cube.py` and `solver.py` have no Home Assistant imports, so the
 tools can use them directly. The tools need the cube to themselves: disable
 the integration while they run. `CLAUDE.md` holds the protocol notes and

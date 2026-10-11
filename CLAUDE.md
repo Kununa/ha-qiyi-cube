@@ -139,6 +139,11 @@ csTimer's `qiyicube.js` / smartcube-web-bluetooth.
 (hassfest + HACS action, also weekly). Both green as of 2026-10-11; HACS
 accepts the local `brand/` folder. `pytest-homeassistant-custom-component` is
 pinned to the HA version we test against – bump deliberately.
+`release.yml` (workflow_dispatch: version, prerelease, dry_run): check →
+reusable tests.yml → bump manifest version (bot commit to main) → tag →
+`qiyi_cube.zip` (integration files at zip root, `hacs.json` has
+`zip_release`) → `gh release create --generate-notes`. Dry run verified
+2026-10-11; no release published yet.
 
 ## Commands
 
