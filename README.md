@@ -1,4 +1,6 @@
-<img src="custom_components/qiyi_cube/brand/icon@2x.png" alt="" width="96" align="right">
+<p align="center">
+  <img src="custom_components/qiyi_cube/brand/icon@2x.png" alt="QiYi Smart Cube icon" width="128">
+</p>
 
 # QiYi Smart Cube for Home Assistant
 
