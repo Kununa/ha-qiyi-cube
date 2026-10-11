@@ -4,6 +4,8 @@
 
 # QiYi Smart Cube for Home Assistant
 
+[![Tests](https://github.com/Kununa/ha-qiyi-cube/actions/workflows/tests.yml/badge.svg)](https://github.com/Kununa/ha-qiyi-cube/actions/workflows/tests.yml)
+
 > **Vibe coded.** This integration was written almost entirely by an AI
 > (Claude Code) in conversation with its owner. It was tested against one real
 > cube (X-Man Tornado V4 AI) on Home Assistant 2026.10 through ESPHome
@@ -174,6 +176,9 @@ python3 -m venv .venv
 .venv/bin/python tools/capture.py 90            # dump raw decrypted frames
 .venv/bin/python tools/gyro_capture.py 120      # print the quaternion stream
 ```
+
+GitHub Actions runs the tests on every push and pull request
+(`.github/workflows/tests.yml`).
 
 `protocol.py`, `cube.py` and `solver.py` have no Home Assistant imports, so the
 tools can use them directly. The tools need the cube to themselves: disable
