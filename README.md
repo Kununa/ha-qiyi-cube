@@ -1,3 +1,5 @@
+<img src="custom_components/qiyi_cube/brand/icon@2x.png" alt="" width="96" align="right">
+
 # QiYi Smart Cube for Home Assistant
 
 > **Vibe coded.** This integration was written almost entirely by an AI
