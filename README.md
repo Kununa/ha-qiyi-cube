@@ -30,7 +30,8 @@ AES-128-ECB, CRC16-MODBUS).
 
 ## Install
 
-**HACS:** add this repository as a custom repository (type *Integration*),
+**HACS:** add `https://github.com/Kununa/ha-qiyi-cube` as a custom repository
+(type *Integration*),
 install *QiYi Smart Cube*, restart Home Assistant.
 
 **Manually:** copy `custom_components/qiyi_cube` into your Home Assistant
@@ -182,3 +183,8 @@ design decisions collected while building this.
   for the QiYi protocol
 - Herbert Kociemba for the two-phase algorithm and
   [RubikTwoPhase](https://github.com/hkociemba/RubiksCube-TwophaseSolver)
+
+## License
+
+MIT – see [LICENSE](LICENSE). The solver dependency RubikTwoPhase is GPLv3
+and installed separately by Home Assistant.

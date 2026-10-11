@@ -16,10 +16,8 @@ csTimer's `qiyicube.js` / smartcube-web-bluetooth.
   after a restart while Core is still starting.
 - Untested on real use yet: real-solve thresholds, smoothness of the live 3D
   view over the proxy.
-- Git: initial commit on `main` 2026-10-11; no remote yet (GitHub repo to be
-  created by the user). README states the project is vibe coded – keep that.
-- `manifest.json` has no `documentation`/`issue_tracker` URL – add once the
-  repo is published (HACS needs a GitHub repo).
+- Public repo https://github.com/Kununa/ha-qiyi-cube (MIT), pushed with `gh`
+  (user logged in as Kununa). README states the project is vibe coded – keep that.
 
 ## The user's cube
 
